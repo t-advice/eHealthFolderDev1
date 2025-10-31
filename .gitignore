@@ -1,0 +1,84 @@
+﻿# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]og/
+[Ll]ogs/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+
+# IDE
+.vs/
+.idea/
+*.swp
+*.DS_Store
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# Output
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.dbmdl
+*.bak
+*.backup
+*.mdf
+*.ldf
+
+# MAUI specific
+*.apk
+*.aab
+*.app
+*.ipa
+*.xcarchive
+*.dSYM/
+
+# Package managers
+*.nupkg
+*.snupkg
+*.lock.json
+packages/
+node_modules/
+wwwroot/lib/
+
+# Azure & Docker
+/secrets.json
+appsettings.*.json
+docker-compose.override.yml
+.env
+
+# Database files
+*.db
+*.sqlite
+*.db3
+
+# Others
+Thumbs.db
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Publish
+publish/
+dist/
+artifacts/
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Logs
+*.log
+logs/
