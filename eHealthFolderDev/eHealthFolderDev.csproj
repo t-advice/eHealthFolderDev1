@@ -67,6 +67,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\AddAppointmentPage.xaml.cs">
+	    <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AddVisitPage.xaml.cs">
+	    <DependentUpon>AddVisitPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\HomePage.xaml.cs">
 	    <DependentUpon>HomePage.xaml</DependentUpon>
 	  </Compile>

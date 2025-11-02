@@ -1,9 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eHealthFolderDev.MainPage">
+             x:Class="eHealthFolderDev.Views.HomePage"
+             Title="Home">
 
-    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header: Logo + Text with Lines -->
+            <Grid ColumnDefinitions="*,Auto,*"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Fill"
+                  Margin="0,10">
+
+                <BoxView Color="Black" HeightRequest="2" VerticalOptions="Center" Grid.Column="0" />
+
+                <HorizontalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                    <Image Source="logo.png" HeightRequest="50"/>
+                    <Label Text="eHealthFolder" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <BoxView Color="Black" HeightRequest="2" VerticalOptions="Center" Grid.Column="2" />
+            </Grid>
+
+            <!-- Welcome Section -->
+            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Welcome" FontSize="22" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <!-- Add Record Button -->
+            <Button x:Name="AddRecordButton"
+                    Clicked="AddRecord_Clicked"
+                    Text="+ Add New Record"
+                    BackgroundColor="#A5D6A7"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    CornerRadius="10"
+                    WidthRequest="450"
+                    HeightRequest="50"
+                    FontSize="14"/>
+
+            <!-- Recent Visits Section -->
+            <Label Text="RECENT VISITS" FontSize="18" FontAttributes="Bold" />
+
+            <CollectionView x:Name="VisitsCollectionView" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="0,5" BackgroundColor="#E0F7FA" StrokeThickness="2">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Hospital}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Notes}" />
+                                <Label Text="{Binding Location}" />
+                                
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Upcoming Appointments Section -->
+            <Label Text="UPCOMING APPOINTMENTS" FontSize="18" FontAttributes="Bold" />
+
+            <CollectionView x:Name="AppointmentsCollectionView" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="0,5" BackgroundColor="#FFF3E0" StrokeThickness="2">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Date, StringFormat='{0:yyyy/MM/dd }'}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Reason}" />
+                                <Label Text="{Binding Hospital, StringFormat='Hospital: {0}'}" FontSize="12" TextColor="Gray"/>
+                                <Label Text="{Binding Location, StringFormat='Location: {0}'}" FontSize="12" TextColor="Gray"/>
+                                <Label Text="{Binding Notes}" FontSize="12" TextColor="Gray"/>
+                                
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             
 
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
+

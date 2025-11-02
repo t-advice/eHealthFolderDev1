@@ -2,11 +2,104 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eHealthFolderDev.Views.AddRecordsPage"
-             Title="AddRecordsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Add Record"
+             BackgroundColor="White">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+            
+            <!-- Header -->
+            <Label Text="Add New Record" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,30"/>
+            
+            <!-- Icon -->
+            <Image Source="logo.png" 
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+            
+            <!-- Description -->
+            <Label Text="Choose the type of record you want to add"
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,30"/>
+            
+            <!-- Record Type Picker -->
+            <Border Padding="0" 
+                    BackgroundColor="White"
+                    StrokeThickness="2"
+                    Stroke="#CCCCCC"
+                    Margin="0,0,0,20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                
+                <Picker x:Name="RecordTypePicker"
+                        Title="Select Record Type"
+                        FontSize="16"
+                        TextColor="Black"
+                        TitleColor="Gray"
+                        HeightRequest="50"
+                        SelectedIndexChanged="OnRecordTypeChanged">
+                    <Picker.Items>
+                        <x:String>Add Visit</x:String>
+                        <x:String>Add Appointment</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
+            
+            <!-- Selected Type Display -->
+            <Frame x:Name="SelectionFrame"
+                   IsVisible="False"
+                   Padding="20"
+                   BackgroundColor="#E8F5E9"
+                   BorderColor="#4CAF50"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Margin="0,10,0,20">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="SelectionLabel"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#2E7D32"
+                           HorizontalOptions="Center"/>
+                    <Label x:Name="SelectionDescription"
+                           FontSize="14"
+                           TextColor="#424242"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+            
+            <!-- Continue Button -->
+            <Button x:Name="ContinueButton"
+                    Text="Continue"
+                    IsVisible="False"
+                    Clicked="OnContinueClicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HeightRequest="55"
+                    CornerRadius="10"
+                    Margin="0,20,0,0"/>
+            
+            <!-- Cancel Button -->
+            <Button Text="Cancel"
+                    Clicked="OnCancelClicked"
+                    BackgroundColor="#F5F5F5"
+                    TextColor="#666666"
+                    FontSize="16"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    BorderColor="#CCCCCC"
+                    BorderWidth="1"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

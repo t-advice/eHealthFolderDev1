@@ -18,12 +18,12 @@ public partial class PersonFolderPage : ContentPage
 	}
 	private async void LoadVisits()
 	{
-		var appoinments = await _database.GetVisitsAsync();
-		AppointmentsCollectionView.ItemsSource = visits;
+		var visits = await _database.GetVisitsAsync();
+		VisitsCollectionView.ItemsSource = visits;
 	}
     private async void LoadAppointments()
     {
-        var appoinments = await _database.GetAppointmentsAsync();
+        var appointments = await _database.GetAppointmentsAsync();
         AppointmentsCollectionView.ItemsSource = appointments;
     }
     private void VisitsButton_Clicked(object sender, EventArgs e)
@@ -49,7 +49,7 @@ public partial class PersonFolderPage : ContentPage
         if (frame?.BindingContext is Visits visit)
         {
             await DisplayAlert("Visit Details",
-                $"Doctor: {visit.Doctor}\nDiagnosis: {visit.Diagnosis}\nTreatment: {visit.Treatment}",
+                $"Doctor: {visit.Doctor}\nDiagnosis: {visit.Diagnosis}\nNotes: {visit.Notes}",
                 "OK");
         }
     }
@@ -68,4 +68,5 @@ public partial class PersonFolderPage : ContentPage
 
 
 
-}
+
+

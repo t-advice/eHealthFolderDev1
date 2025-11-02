@@ -3,12 +3,20 @@
     x:Class="eHealthFolderDev.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:eHealthFolderDev"
-    Title="eHealthFolderDev">
+    xmlns:views="clr-namespace:eHealthFolderDev.Views"
+    Title="eHealthFolder">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+
+        <ShellContent
+         Title="Home" Icon="home.png" ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent
+        Title="Person Folder" Icon="folder.png" ContentTemplate="{DataTemplate views:PersonFolderPage}"/>
+        <ShellContent
+        Title="Medical Report" Icon="pdfreport.png" ContentTemplate="{DataTemplate views:MedicalReportPage}"/>
+        <ShellContent
+        Title="Settings" Icon="settings.png" ContentTemplate="{DataTemplate views:SettingsPage}"/>
+
+    </TabBar>
 
 </Shell>
