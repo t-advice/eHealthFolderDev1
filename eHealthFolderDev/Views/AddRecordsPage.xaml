@@ -8,14 +8,54 @@
     <ScrollView>
         <VerticalStackLayout Padding="30" Spacing="25">
             
-            <!-- Header -->
-            <Label Text="Add New Record" 
-                   FontSize="15" 
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,30"/>
+            <!-- Header with OCR Button -->
+            <Grid ColumnDefinitions="*,Auto" Margin="0,20,0,30">
+                <Label Text="Add New Record" 
+                       FontSize="15" 
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"/>
+                
+                <!-- OCR Camera Button -->
+                <ImageButton x:Name="CameraButton"
+                             Grid.Column="1"
+                             Source="vision_camera.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             BackgroundColor="Transparent"
+                             Clicked="OnCameraClicked"
+                             IsVisible="False"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center">
+                    <ImageButton.Shadow>
+                        <Shadow Brush="Black" Opacity="0.3" Radius="5" Offset="2,2"/>
+                    </ImageButton.Shadow>
+                </ImageButton>
+            </Grid>
             
-            
+            <!-- OCR Status Indicator -->
+            <Frame x:Name="OcrStatusFrame"
+                   IsVisible="False"
+                   Padding="15"
+                   BackgroundColor="#E3F2FD"
+                   BorderColor="#2196F3"
+                   CornerRadius="8"
+                   Margin="0,0,0,10">
+                <HorizontalStackLayout Spacing="10">
+                    <ActivityIndicator x:Name="OcrActivityIndicator"
+                                       IsRunning="False"
+                                       IsVisible="False"
+                                       Color="#2196F3"
+                                       VerticalOptions="Center"/>
+                    <Label x:Name="OcrStatusLabel"
+                           Text="Processing image..."
+                           FontSize="14"
+                           TextColor="#1976D2"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Frame>
             
             <!-- Description -->
             <Label Text="Choose the type of record you want to add"
