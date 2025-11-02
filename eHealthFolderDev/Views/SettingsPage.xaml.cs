@@ -6,4 +6,10 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private async void OnMyProfileTapped(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync("ProfileDetailsPage");
+	}
 }
+

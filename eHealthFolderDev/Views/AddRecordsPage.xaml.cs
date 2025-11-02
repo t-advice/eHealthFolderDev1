@@ -43,11 +43,11 @@ public partial class AddRecordsPage : ContentPage
 
 		if (RecordTypePicker.SelectedIndex == 0) // Visit
 		{
-			await Shell.Current.GoToAsync("addvisit");
+			await Shell.Current.GoToAsync("AddVisitPage");
 		}
 		else // Appointment
 		{
-			await Shell.Current.GoToAsync("addappointment");
+			await Shell.Current.GoToAsync("AddAppointmentPage");
 		}
 	}
 

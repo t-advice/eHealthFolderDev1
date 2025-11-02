@@ -50,7 +50,7 @@ namespace eHealthFolderDev.Views
         {
             await AddRecordButton.ScaleTo(0.9, 100);
             await AddRecordButton.ScaleTo(1, 100);
-            await Shell.Current.GoToAsync("addrecords");
+            await Shell.Current.GoToAsync("AddRecordsPage");
         }
 
         // Visit tapped
