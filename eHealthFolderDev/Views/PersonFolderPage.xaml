@@ -8,30 +8,36 @@
 
         <!-- Tab buttons -->
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-            <Button Text="Visits" x:Name="VisitsButton" Clicked="VisitsButton_Clicked"
-                    TextColor="Black" FontAttributes="Bold"
-                    BackgroundColor="#A5D6A7" />
-            <Button Text="Appointments" x:Name="AppointmentsButton" Clicked="AppointmentsButton_Clicked"
-                    TextColor="Black" FontAttributes="Bold"
-                    BackgroundColor="#E0F7FA" />
+            <Button Text="Visits" 
+                    Command="{Binding ShowVisitsCommand}"
+                    TextColor="Black" 
+                    FontAttributes="Bold"
+                    BackgroundColor="{Binding VisitsButtonColor}" />
+            <Button Text="Appointments" 
+                    Command="{Binding ShowAppointmentsCommand}"
+                    TextColor="Black" 
+                    FontAttributes="Bold"
+                    BackgroundColor="{Binding AppointmentsButtonColor}" />
         </HorizontalStackLayout>
 
         <!-- Visits CollectionView -->
-        <CollectionView x:Name="VisitsCollectionView" IsVisible="True">
+        <CollectionView ItemsSource="{Binding Visits}" 
+                        IsVisible="{Binding IsVisitsVisible}"
+                        EmptyView="No visits recorded yet">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="10" Margin="5" CornerRadius="8" BackgroundColor="#E0F7FA">
                         <VerticalStackLayout>
-                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" />
-                            <Label Text="{Binding Doctor}" />
-                            <Label Text="{Binding Department}" />
-                            <Label Text="{Binding Diagnosis}" />
-                            <Label Text="{Binding Treatment}" />
-                            <Label Text="{Binding Hospital}" />
+                            <Label Text="{Binding Date, StringFormat='Date: {0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Hospital, StringFormat='Hospital: {0}'}" FontSize="14" Margin="0,5,0,0"/>
+                            <Label Text="{Binding Doctor, StringFormat='Doctor: {0}'}" FontSize="14"/>
+                            <Label Text="{Binding Department, StringFormat='Department: {0}'}" FontSize="14"/>
+                            <Label Text="{Binding Diagnosis, StringFormat='Diagnosis: {0}'}" FontSize="14" LineBreakMode="TailTruncation" MaxLines="2"/>
                         </VerticalStackLayout>
 
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VisitItem_Tapped" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.VisitTappedCommand}"
+                                                  CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
@@ -39,21 +45,23 @@
         </CollectionView>
 
         <!-- Appointments CollectionView -->
-        <CollectionView x:Name="AppointmentsCollectionView" IsVisible="False">
+        <CollectionView ItemsSource="{Binding Appointments}" 
+                        IsVisible="{Binding IsAppointmentsVisible}"
+                        EmptyView="No appointments scheduled yet">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="10" Margin="5" CornerRadius="8" BackgroundColor="#FFF3E0">
                         <VerticalStackLayout>
-                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" />
-                            <Label Text="{Binding Hospital}" />
-                            <Label Text="{Binding Location}" />
-                            <Label Text="{Binding Reason}" />
-                            <Label Text="{Binding Time}" />
-                            <Label Text="{Binding Notes}" />
+                            <Label Text="{Binding Date, StringFormat='Date: {0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Time, StringFormat='Time: {0}'}" FontSize="14" Margin="0,5,0,0"/>
+                            <Label Text="{Binding Hospital, StringFormat='Hospital: {0}'}" FontSize="14"/>
+                            <Label Text="{Binding Location, StringFormat='Location: {0}'}" FontSize="14"/>
+                            <Label Text="{Binding Reason, StringFormat='Reason: {0}'}" FontSize="14" LineBreakMode="TailTruncation" MaxLines="2"/>
                         </VerticalStackLayout>
 
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AppointmentItem_Tapped" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AppointmentTappedCommand}"
+                                                  CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>

@@ -2,11 +2,106 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eHealthFolderDev.Views.Details.AppointmentsDetailsPage"
-             Title="AppointmentsDetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Appointment Details"
+             BackgroundColor="White">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+            
+            <!-- Header -->
+            <Label Text="Appointment Details" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,20"/>
+
+            <!-- Appointment Info Card -->
+            <Frame Padding="20" 
+                   BackgroundColor="#FFF3E0" 
+                   BorderColor="#FFB74D"
+                   CornerRadius="15"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    
+                    <!-- Date -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Date" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Date, StringFormat='{0:dddd, MMMM dd, yyyy}'}" 
+                               FontSize="18"
+                               FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+
+                    <!-- Time -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Time" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Time}" 
+                               FontSize="18"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                    <!-- Hospital -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Hospital/Clinic" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Hospital}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <!-- Location -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Location/Address" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Location}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                    <!-- Reason -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Reason for Appointment" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Reason}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <!-- Notes -->
+                    <VerticalStackLayout Spacing="5" IsVisible="{Binding HasNotes}">
+                        <Label Text="Additional Notes" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Appointment.Notes}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Button Text="Back to Folder"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

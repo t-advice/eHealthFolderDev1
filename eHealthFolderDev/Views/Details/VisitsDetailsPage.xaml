@@ -2,11 +2,106 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eHealthFolderDev.Views.Details.VisitsDetailsPage"
-             Title="VisitsDetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Visit Details"
+             BackgroundColor="White">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+            
+            <!-- Header -->
+            <Label Text="Visit Details" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,20"/>
+
+            <!-- Visit Info Card -->
+            <Frame Padding="20" 
+                   BackgroundColor="#E8F5E9" 
+                   BorderColor="#4CAF50"
+                   CornerRadius="15"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    
+                    <!-- Date -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Date of Visit" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Date, StringFormat='{0:dddd, MMMM dd, yyyy}'}" 
+                               FontSize="18"
+                               FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                    <!-- Hospital -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Hospital/Clinic" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Hospital}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <!-- Doctor -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Doctor" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Doctor}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <!-- Department -->
+                    <VerticalStackLayout Spacing="5" IsVisible="{Binding HasDepartment}">
+                        <Label Text="Department" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Department}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                    <!-- Diagnosis -->
+                    <VerticalStackLayout Spacing="5" IsVisible="{Binding HasDiagnosis}">
+                        <Label Text="Diagnosis" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Diagnosis}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                    <!-- Notes -->
+                    <VerticalStackLayout Spacing="5" IsVisible="{Binding HasNotes}">
+                        <Label Text="Additional Notes" 
+                               FontSize="14" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Visit.Notes}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Button Text="Back to Folder"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

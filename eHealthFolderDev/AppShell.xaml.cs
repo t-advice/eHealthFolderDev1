@@ -1,4 +1,5 @@
 ﻿using eHealthFolderDev.Views;
+using eHealthFolderDev.Views.Details;
 
 namespace eHealthFolderDev
 {
@@ -9,9 +10,8 @@ namespace eHealthFolderDev
             InitializeComponent();
             
             // Register routes for navigation
-            Routing.RegisterRoute("addrecords", typeof(AddRecordsPage));
-            Routing.RegisterRoute("addvisit", typeof(AddVisitsPage));
-            Routing.RegisterRoute("addappointment", typeof(AddAppointmentsPage));
+            Routing.RegisterRoute(nameof(VisitsDetailsPage), typeof(VisitsDetailsPage));
+            Routing.RegisterRoute(nameof(AppointmentsDetailsPage), typeof(AppointmentsDetailsPage));
         }
     }
 }
