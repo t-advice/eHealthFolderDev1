@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using eHealthFolderDev.Services;
 
 namespace eHealthFolderDev
 {
@@ -18,6 +19,14 @@ namespace eHealthFolderDev
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton<eHealthFolderDatabase>(s =>
+            {
+                string dbPath = Path.Combine(FileSystem.AppDataDirectory, "eHealthFolder.db3");
+                return new eHealthFolderDatabase(dbPath);
+            });
+
+
 
             return builder.Build();
         }
